@@ -12,7 +12,7 @@ import java.util.Date;
  * @author Alex
  */
 public class Member {
-    
+
     private String id;
     private String name;
     private String address;
@@ -21,16 +21,13 @@ public class Member {
     private String status;
     private float balance;
 
-    public Member(String name, String address, Date dob, Date dor, String status, float balance) {
-        this.name = name;
-        this.address = address;
-        this.dob = dob;
-        this.dor = dor;
-        this.status = status;
-        this.balance = balance;
+    public Member() {
+
     }
-    
-    
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public float getBalance() {
         return balance;
@@ -89,5 +86,4 @@ public class Member {
         return "Member{" + "name=" + name + ", address=" + address + ", dob=" + dob + ", dor=" + dor + ", status=" + status + ", balance=" + balance + '}';
     }
 
-    
 }

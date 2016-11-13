@@ -10,12 +10,11 @@ package model;
  * @author nemeshvarsani
  */
 public class User {
-    
+
     private String id;
     private String password;
     private String status;
 
-    
     //constructor 
     public User(String id, String password, String status) {
         this.id = id;
@@ -23,7 +22,6 @@ public class User {
         this.status = status;
     }
 
-    
     public String getId() {
         return id;
     }
@@ -52,6 +50,5 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", password=" + password + ", status=" + status + '}';
     }
-    
-    
+
 }

@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -25,7 +23,7 @@ import model.Member;
  *
  * @author Alex
  */
-public class ListAllMembers extends HttpServlet {
+public class MemberDashboard extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,38 +35,22 @@ public class ListAllMembers extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, ClassNotFoundException, SQLException {
+            throws ServletException, IOException, SQLException, ClassNotFoundException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ListAllMembers</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ListAllMembers at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            
-            DatabaseHandler dbHandler = new DatabaseHandler();
-            
-            List<Member> memberList = dbHandler.getAllMembers();
-            
-            Iterator it = memberList.iterator();
-            while (it.hasNext()) {
-                out.println("hi");
-                out.println(it.next());
-            }
-            
-//            HttpSession session = request.getSession();
-//            
-//            session.setAttribute("memberList", memberList);
-//            
-//            RequestDispatcher view = request.getRequestDispatcher("list-all-members.jsp");
-//
-//            view.forward(request, response);
-        }
+        DatabaseHandler db = new DatabaseHandler();
+        
+        HttpSession session = request.getSession();
+        
+//        Member sessionMember = (Member) session.getAttribute("")
+        
+        String memberId = request.getParameter("username");
+        
+        Member member = db.getMember(memberId);
+        
+        session.setAttribute("memberDetails", member);
+        
+        RequestDispatcher view = request.getRequestDispatcher("member-dashboard.jsp");
+        view.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -85,10 +67,10 @@ public class ListAllMembers extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListAllMembers.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ListAllMembers.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MemberDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MemberDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -105,10 +87,10 @@ public class ListAllMembers extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ListAllMembers.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(ListAllMembers.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MemberDashboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MemberDashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
