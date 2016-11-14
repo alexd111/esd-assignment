@@ -4,6 +4,7 @@
     Author     : Alex
 --%>
 
+<%@page import="model.Member"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -16,13 +17,19 @@
     <body>
         <h1>Hello World!</h1>
         <%
-        List members = (List)session.getAttribute("memberList");
+        List<Member> members = (List)session.getAttribute("memberList");
         if (members != null) {
-            Iterator it = members.iterator();
-        while(it.hasNext()) {
-          out.println("<br>" + it.next());
+            Iterator<Member> it = members.iterator();
+            while(it.hasNext()) {
+              Member member = it.next();
+              out.println(member.getName());
+              out.println(member.getAddress());
+              out.println(member.getDob());
+              out.println(member.getDor());
+              out.println(member.getBalance());
+              out.println(member.getStatus());
+            }
         }
-      }
       
         %>
     </body>

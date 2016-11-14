@@ -55,19 +55,19 @@ public class ListAllMembers extends HttpServlet {
             
             List<Member> memberList = dbHandler.getAllMembers();
             
-            Iterator it = memberList.iterator();
-            while (it.hasNext()) {
-                out.println("hi");
-                out.println(it.next());
-            }
+//            Iterator it = memberList.iterator();
+//            while (it.hasNext()) {
+//                out.println("hi");
+//                out.println(it.next());
+//            }
             
-//            HttpSession session = request.getSession();
-//            
-//            session.setAttribute("memberList", memberList);
-//            
-//            RequestDispatcher view = request.getRequestDispatcher("list-all-members.jsp");
-//
-//            view.forward(request, response);
+            HttpSession session = request.getSession();
+            
+            session.setAttribute("memberList", memberList);
+            
+            RequestDispatcher view = request.getRequestDispatcher("admin/list-all-members.jsp");
+
+            view.forward(request, response);
         }
     }
 
