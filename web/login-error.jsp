@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Error! Incorrect details</h1>
+        <h1>Error! Incorrect login details. Have you registered?</h1>
     </body>
 </html>

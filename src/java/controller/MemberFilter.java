@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -12,11 +12,14 @@ import java.util.logging.Logger;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import model.DatabaseHandler;
 
 /**
  *
@@ -42,7 +45,14 @@ public class MemberFilter implements Filter {
         
         try {
             boolean isMember = db.checkIfMember(userName, password);
-            if (isMember == false) {
+            if (userName.equals("admin") & (password.equals("admin"))){
+                HttpSession session = httpReq.getSession();
+                session.setAttribute("admin-authenticated", true);
+                RequestDispatcher view = request.getRequestDispatcher("ListAllMembers");
+                view.forward(httpReq, httpResp);
+//                httpResp.sendRedirect("ListAllMembers");
+            }
+            else if (isMember == false) {
                 httpResp.sendRedirect("login-error.jsp");
             }
             else {
