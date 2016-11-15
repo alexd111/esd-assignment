@@ -11,9 +11,14 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
-    <form method="POST" action="MakeClaim.do">
-        Make a Claim:<br>
-        <input type="text" name="claim"><br>
-        <input type="SUBMIT">
-    </form>
+    <body>
+        <h1>Make a Claim</h1>
+        <form method="POST" action="MakeClaim.do">
+            Membership ID:<br>
+            <input type="text" name="memberID"><br>           
+            Enter Rationale:<br>
+            <textarea name="rationale" rows="10" cols="30"></textarea>
+            <input type="SUBMIT">
+        </form>
+    </body>
 </html>
