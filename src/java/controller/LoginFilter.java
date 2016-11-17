@@ -25,7 +25,7 @@ import model.DatabaseHandler;
  *
  * @author Alex
  */
-public class MemberFilter implements Filter {
+public class LoginFilter implements Filter {
     
     private FilterConfig fc;
 
@@ -56,12 +56,14 @@ public class MemberFilter implements Filter {
                 httpResp.sendRedirect("login-error.jsp");
             }
             else {
+                HttpSession session = httpReq.getSession();
+                session.setAttribute("user-authenticated", true);
                 chain.doFilter(request, response);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(MemberFilter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginFilter.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MemberFilter.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LoginFilter.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         

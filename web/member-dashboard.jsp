@@ -18,5 +18,6 @@
             out.println(member.getAddress());
         %>
             
+        <a href="Logout" class="button">Logout</a>
     </body>
 </html>

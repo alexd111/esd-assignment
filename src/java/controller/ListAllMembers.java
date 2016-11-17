@@ -44,30 +44,37 @@ public class ListAllMembers extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ListAllMembers</title>");            
+            out.println("<title>Servlet ListAllMembers</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ListAllMembers at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-            
+
             DatabaseHandler dbHandler = new DatabaseHandler();
-            
+
             List<Member> memberList = dbHandler.getAllMembers();
-            
+
 //            Iterator it = memberList.iterator();
 //            while (it.hasNext()) {
 //                out.println("hi");
 //                out.println(it.next());
 //            }
-            
-            HttpSession session = request.getSession();
-            
-            session.setAttribute("memberList", memberList);
-            
-            RequestDispatcher view = request.getRequestDispatcher("admin/list-all-members.jsp");
+            HttpSession session = request.getSession(false);
 
-            view.forward(request, response);
+            if (session != null && session.getAttribute("admin-authenticated") != null) {
+                session.setAttribute("memberList", memberList);
+
+                RequestDispatcher view = request.getRequestDispatcher("admin/list-all-members.jsp");
+
+                view.forward(request, response);
+            }
+            else {
+                RequestDispatcher view = request.getRequestDispatcher("login-error.jsp");
+
+                view.forward(request, response);
+            }
+
         }
     }
 

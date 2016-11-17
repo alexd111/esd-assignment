@@ -43,5 +43,6 @@
 
                     %>
         </table>
+        <a href="Logout" class="button">Logout</a>
     </body>
 </html>
