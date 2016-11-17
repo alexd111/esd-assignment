@@ -11,14 +11,14 @@ import java.util.Date;
  *
  * @author amaka
  */
-public class Payments {
+public class Payment {
 
     private String memberID;
     private String PaymentType;
     private float Amount;
     private Date paymentDate;
     
-    public Payments() {
+    public Payment() {
 
     }
 

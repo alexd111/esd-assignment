@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class Claim {
 
+    private int id;
     private String memberID;
     private Date claimDate;
     private String Rationale;
@@ -20,7 +21,15 @@ public class Claim {
     private float Amount;
 
     public Claim() {
-        
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMemberID() {

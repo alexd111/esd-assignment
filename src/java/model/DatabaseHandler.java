@@ -50,6 +50,111 @@ public class DatabaseHandler {
         return members;
     }
     
+    public List<Claim> getAllClaims() throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        
+        Class.forName("com.mysql.jdbc.Driver");
+
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery("SELECT * FROM claims");
+        
+        List<Claim> claims = new ArrayList<Claim>();
+        
+        while (resultSet.next()) {
+            Claim claim = new Claim();
+            claim.setMemberID(resultSet.getString("id"));
+            claim.setClaimDate(resultSet.getDate("date"));
+            claim.setRationale(resultSet.getString("rationale"));
+            claim.setStatus(resultSet.getString("status"));
+            claim.setAmount(resultSet.getFloat("id"));
+            claims.add(claim);
+        }
+        return claims;
+    }
+    
+    public List<Claim> getMemberClaims(Member member) throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String id = member.getId();
+        
+        Class.forName("com.mysql.jdbc.Driver");
+
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery("SELECT * FROM claims WHERE mem_id=" + id);
+        
+        List<Claim> claims = new ArrayList<Claim>();
+        
+        while (resultSet.next()) {
+            Claim claim = new Claim();
+            claim.setMemberID(resultSet.getString("id"));
+            claim.setClaimDate(resultSet.getDate("date"));
+            claim.setRationale(resultSet.getString("rationale"));
+            claim.setStatus(resultSet.getString("status"));
+            claim.setAmount(resultSet.getFloat("id"));
+            claims.add(claim);
+        }
+        return claims;
+    }
+    
+    public List<Payment> getAllPayments() throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        
+        Class.forName("com.mysql.jdbc.Driver");
+
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery("SELECT * FROM payments");
+        
+        List<Payment> payments = new ArrayList<Payment>();
+        
+        while (resultSet.next()) {
+            Payment payment = new Payment();
+            payment.setMemberID(resultSet.getString("id"));
+            payment.setPaymentType(resultSet.getString("type_of_payment"));
+            payment.setAmount(resultSet.getFloat("amount"));
+            payment.setPaymentDate(resultSet.getDate("id"));
+            payments.add(payment);
+        }
+        return payments;
+    }
+    
+    public List<Payment> getMemberPayments(Member member) throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String id = member.getId();
+        
+        Class.forName("com.mysql.jdbc.Driver");
+
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery("SELECT * FROM payments WHERE mem_id=" + id);
+        
+        List<Payment> payments = new ArrayList<Payment>();
+        
+        while (resultSet.next()) {
+            Payment payment = new Payment();
+            payment.setMemberID(resultSet.getString("id"));
+            payment.setPaymentType(resultSet.getString("type_of_payment"));
+            payment.setAmount(resultSet.getFloat("amount"));
+            payment.setPaymentDate(resultSet.getDate("id"));
+            payments.add(payment);
+        }
+        return payments;
+    }
+    
+    
     public boolean checkIfMember(String userName, String password) throws SQLException, ClassNotFoundException {
         Connection connection = null;
         ResultSet resultSet = null;
@@ -138,5 +243,38 @@ public class DatabaseHandler {
         userStm.setString(4, claim.getStatus());
         userStm.setFloat(5, claim.getAmount());
         
+        userStm.executeUpdate();
+        userStm.close();
+    }
+    
+    public void addPayment(Payment payment) throws SQLException, ClassNotFoundException {
+        Connection connection = null;
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        
+        PreparedStatement paymentStm = connection.prepareStatement("INSERT INTO payments (mem_id,type_of_payment,amount,date) VALUES (?,?,?,?)");
+        
+        paymentStm.setString(1, payment.getMemberID());
+        paymentStm.setString(2, payment.getPaymentType());
+        paymentStm.setFloat(3, payment.getAmount());
+        paymentStm.setDate(4, (Date) payment.getPaymentDate());
+        
+        paymentStm.executeUpdate();
+        paymentStm.close();
+    }
+    
+    public void updateClaimStatus(Claim claim, String status) throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        
+        int id = claim.getId();
+        
+        PreparedStatement claimStm = connection.prepareStatement("UPDATE claims SET status=? WHERE id=?");
+        claimStm.setString(1, status);
+        claimStm.setInt(2, id);
+        
+        claimStm.executeUpdate();
+        claimStm.close();
     }
 }
