@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author amaka
  */
-public class Claims {
+public class Claim {
 
     private String memberID;
     private Date claimDate;
@@ -19,7 +19,7 @@ public class Claims {
     private String Status;
     private float Amount;
 
-    public Claims() {
+    public Claim() {
         
     }
 

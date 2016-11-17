@@ -6,6 +6,7 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -83,6 +84,7 @@ public class DatabaseHandler {
         stm.setString(1, id);
         
         resultSet = stm.executeQuery();
+        stm.close();
         
         while(resultSet.next()) {
             member.setId(resultSet.getString("id"));
@@ -94,5 +96,47 @@ public class DatabaseHandler {
             member.setBalance(resultSet.getFloat("balance"));
         }
         return member;
+    }
+    
+    public void addMember(Member member, User user) throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        
+        PreparedStatement memberStm = connection.prepareStatement("INSERT INTO members VALUES (?,?,?,?,?,?,?)");
+        
+        memberStm.setString(1, member.getId());
+        memberStm.setString(2, member.getName());
+        memberStm.setDate(3, (Date) member.getDob());
+        memberStm.setDate(4, (Date) member.getDor());
+        memberStm.setString(5, member.getStatus());
+        memberStm.setFloat(6, member.getBalance());
+        
+        memberStm.executeUpdate();
+        memberStm.close();
+        
+        PreparedStatement userStm = connection.prepareStatement("INSERT INTO users VALUES (?,?,?)");
+        
+        userStm.setString(1, user.getId());
+        userStm.setString(2, user.getPassword());
+        userStm.setString(3, user.getStatus());
+        
+        userStm.executeUpdate();
+        userStm.close();
+    }
+    
+    public void addClaim(Claim claim) throws ClassNotFoundException, SQLException {
+        Connection connection = null;
+        
+        Class.forName("com.mysql.jdbc.Driver");
+        
+        PreparedStatement userStm = connection.prepareStatement("INSERT INTO claims (mem_id,date,rationale,status,amount) VALUES (?,?,?,?,?)");
+        
+        userStm.setString(1, claim.getMemberID());
+        userStm.setDate(2, (Date) claim.getClaimDate());
+        userStm.setString(3, claim.getRationale());
+        userStm.setString(4, claim.getStatus());
+        userStm.setFloat(5, claim.getAmount());
+        
     }
 }
