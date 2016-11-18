@@ -14,8 +14,8 @@
     <body>
         <h1>Make a Claim</h1>
         <form method="POST" action="MakeClaim.do">
-            Membership ID:<br>
-            <input type="text" name="memberID"><br>           
+            Amount:<br>
+            <input type="text" name="amount"><br>           
             Enter Rationale:<br>
             <textarea name="rationale" rows="10" cols="30"></textarea>
             <input type="SUBMIT">

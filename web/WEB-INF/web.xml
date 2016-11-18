@@ -37,6 +37,10 @@
         <servlet-name>UserLogout</servlet-name>
         <servlet-class>controller.Logout</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MakeClaim</servlet-name>
+        <servlet-class>controller.MakeClaim</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers</url-pattern>
@@ -48,6 +52,10 @@
     <servlet-mapping>
         <servlet-name>UserLogout</servlet-name>
         <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakeClaim</servlet-name>
+        <url-pattern>MakeClaim.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
