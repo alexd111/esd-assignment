@@ -5,22 +5,29 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author amaka
  */
-public class Payments {
+public class Payment {
 
     private String memberID;
     private String PaymentType;
     private float Amount;
-    private String Date;
+    private Date paymentDate;
+    
+    public Payment() {
 
-    public Payments(String memberID, String PaymentType, String Date, float Amount) {
-        this.memberID = memberID;
-        this.PaymentType = PaymentType;
-        this.Date = Date;
-        this.Amount = Amount;
+    }
+
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
     }
 
     public String getMemberID() {
@@ -45,14 +52,6 @@ public class Payments {
 
     public void setAmount(float Amount) {
         this.Amount = Amount;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String Date) {
-        this.Date = Date;
     }
 
 }

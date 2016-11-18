@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : list-all-members
     Created on : 03-Nov-2016, 15:44:27
     Author     : Alex
@@ -15,21 +15,34 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-        List<Member> members = (List)session.getAttribute("memberList");
-        if (members != null) {
-            Iterator<Member> it = members.iterator();
-            while(it.hasNext()) {
-              Member member = it.next();
-              out.println(member.getName());
-              out.println(member.getAddress());
-              out.println(member.getDob());
-              out.println(member.getDor());
-              out.println(member.getBalance());
-              out.println(member.getStatus());
-            }
-        }
-      
-        %>
+        <table>
+            <tr><th>Name</th><th>Address</th><th>DOB</th><th>DOR</th><th>Balance</th><th>Status</th></tr>
+                    <%
+                        boolean isAdmin = (boolean) session.getAttribute("admin-authenticated");
+                        if (isAdmin == true) {
+                            List<Member> members = (List) session.getAttribute("memberList");
+                            if (members != null) {
+                                Iterator<Member> it = members.iterator();
+
+                                while (it.hasNext()) {
+                                    out.println("<tr>");
+                                    Member member = it.next();
+                                    out.println("<td>" + member.getName() + "</td>");
+                                    out.println("<td>" + member.getAddress() + "</td>");
+                                    out.println("<td>" + member.getDob() + "</td>");
+                                    out.println("<td>" + member.getDor() + "</td>");
+                                    out.println("<td>" + member.getBalance() + "</td>");
+                                    out.println("<td>" + member.getStatus() + "</td>");
+                                    out.println("</tr>");
+                                }
+                            }
+                        }
+                        else {
+                            out.println("You haven't logged in as an admin");
+                        }
+
+                    %>
+        </table>
+        <a href="Logout" class="button">Logout</a>
     </body>
 </html>

@@ -5,24 +5,31 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author amaka
  */
-public class Claims {
+public class Claim {
 
+    private int id;
     private String memberID;
-    private String Date;
+    private Date claimDate;
     private String Rationale;
     private String Status;
     private float Amount;
 
-    public Claims(String memberID, String Rationale, String Date, float Amount, String Status) {
-        this.memberID = memberID;
-        this.Rationale = Rationale;
-        this.Date = Date;
-        this.Amount = Amount;
-        this.Status = Status;
+    public Claim() {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMemberID() {
@@ -31,14 +38,6 @@ public class Claims {
 
     public void setMemberID(String memberID) {
         this.memberID = memberID;
-    }
-
-    public String getDate() {
-        return Date;
-    }
-
-    public void setDate(String date) {
-        this.Date = date;
     }
 
     public String getRationale() {
@@ -65,4 +64,11 @@ public class Claims {
         this.Amount = Amount;
     }
 
+    public Date getClaimDate() {
+        return claimDate;
+    }
+
+    public void setClaimDate(Date claimDate) {
+        this.claimDate = claimDate;
+    }
 }

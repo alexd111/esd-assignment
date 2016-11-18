@@ -2,11 +2,28 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>UserLogin</filter-name>
-        <filter-class>model.MemberFilter</filter-class>
+        <filter-class>controller.LoginFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>AdminAuth</filter-name>
+        <filter-class>controller.AdminFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>UserAuth</filter-name>
+        <filter-class>controller.UserFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>UserLogin</filter-name>
         <servlet-name>MemberLogin</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminAuth</filter-name>
+        <url-pattern>/ListAllMembers</url-pattern>
+        <url-pattern>/admin/list-all-members.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserAuth</filter-name>
+        <url-pattern>/member-dashboard</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>ListAllMembers</servlet-name>
@@ -16,6 +33,14 @@
         <servlet-name>MemberLogin</servlet-name>
         <servlet-class>controller.MemberDashboard</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserLogout</servlet-name>
+        <servlet-class>controller.Logout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MakeClaim</servlet-name>
+        <servlet-class>controller.MakeClaim</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers</url-pattern>
@@ -23,6 +48,14 @@
     <servlet-mapping>
         <servlet-name>MemberLogin</servlet-name>
         <url-pattern>/MemberLogin.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserLogout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakeClaim</servlet-name>
+        <url-pattern>/MakeClaim.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
