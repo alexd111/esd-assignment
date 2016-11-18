@@ -55,7 +55,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MakeClaim</servlet-name>
-        <url-pattern>MakeClaim.do</url-pattern>
+        <url-pattern>/MakeClaim.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
