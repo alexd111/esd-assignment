@@ -15,7 +15,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
         <%
         List<Member> members = (List)session.getAttribute("memberList");
         if (members != null) {
