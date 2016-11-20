@@ -11,18 +11,16 @@
     <body>
 
         <form align="center" 
-            action ="welcome.jsp" method="POST">
+            action ="RegisterUser.do" method="POST">
 
             First name:<br>
             <input type="text" name="firstname" required><br>
             Last name:<br>
             <input   type="text" name="lastname" required><br>
             Address:<br>
-            <input   type="text" name="Address" required><br>
+            <input   type="text" name="address" required><br>
             Date Of Birth:<br>
             <input type="date" name="DOB" required><br>
-            Date of Registration:<br>
-            <input type="date" name="date of registration" required><br>
                 
          
             <input type="submit" value="Submit">

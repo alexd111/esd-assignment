@@ -16,10 +16,8 @@ public class User {
     private String status;
 
     //constructor 
-    public User(String id, String password, String status) {
-        this.id = id;
-        this.password = password;
-        this.status = status;
+    public User() {
+        
     }
 
     public String getId() {

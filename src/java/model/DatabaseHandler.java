@@ -160,6 +160,8 @@ public class DatabaseHandler {
         ResultSet resultSet = null;
 
         Class.forName("com.mysql.jdbc.Driver");
+        
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
 
         connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
         
@@ -189,7 +191,6 @@ public class DatabaseHandler {
         stm.setString(1, id);
         
         resultSet = stm.executeQuery();
-        stm.close();
         
         while(resultSet.next()) {
             member.setId(resultSet.getString("id"));
@@ -208,17 +209,22 @@ public class DatabaseHandler {
         
         Class.forName("com.mysql.jdbc.Driver");
         
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+        
         PreparedStatement memberStm = connection.prepareStatement("INSERT INTO members VALUES (?,?,?,?,?,?,?)");
+        
+        java.sql.Date dobSqlDate = new java.sql.Date(member.getDob().getTime());
+        java.sql.Date dorSqlDate = new java.sql.Date(member.getDor().getTime());
         
         memberStm.setString(1, member.getId());
         memberStm.setString(2, member.getName());
-        memberStm.setDate(3, (Date) member.getDob());
-        memberStm.setDate(4, (Date) member.getDor());
-        memberStm.setString(5, member.getStatus());
-        memberStm.setFloat(6, member.getBalance());
+        memberStm.setString(3, member.getAddress());
+        memberStm.setDate(4, dobSqlDate);
+        memberStm.setDate(5, dorSqlDate);
+        memberStm.setString(6, member.getStatus());
+        memberStm.setFloat(7, member.getBalance());
         
         memberStm.executeUpdate();
-        memberStm.close();
         
         PreparedStatement userStm = connection.prepareStatement("INSERT INTO users VALUES (?,?,?)");
         
@@ -227,7 +233,6 @@ public class DatabaseHandler {
         userStm.setString(3, user.getStatus());
         
         userStm.executeUpdate();
-        userStm.close();
     }
     
     public void addClaim(Claim claim) throws ClassNotFoundException, SQLException {
@@ -235,22 +240,27 @@ public class DatabaseHandler {
         
         Class.forName("com.mysql.jdbc.Driver");
         
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+        
         PreparedStatement userStm = connection.prepareStatement("INSERT INTO claims (mem_id,date,rationale,status,amount) VALUES (?,?,?,?,?)");
         
+        java.sql.Date claimSqlDate = new java.sql.Date(claim.getClaimDate().getTime());
+        
         userStm.setString(1, claim.getMemberID());
-        userStm.setDate(2, (Date) claim.getClaimDate());
+        userStm.setDate(2, claimSqlDate);
         userStm.setString(3, claim.getRationale());
         userStm.setString(4, claim.getStatus());
         userStm.setFloat(5, claim.getAmount());
         
         userStm.executeUpdate();
-        userStm.close();
     }
     
     public void addPayment(Payment payment) throws SQLException, ClassNotFoundException {
         Connection connection = null;
         
         Class.forName("com.mysql.jdbc.Driver");
+        
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
         
         PreparedStatement paymentStm = connection.prepareStatement("INSERT INTO payments (mem_id,type_of_payment,amount,date) VALUES (?,?,?,?)");
         
@@ -260,13 +270,14 @@ public class DatabaseHandler {
         paymentStm.setDate(4, (Date) payment.getPaymentDate());
         
         paymentStm.executeUpdate();
-        paymentStm.close();
     }
     
     public void updateClaimStatus(Claim claim, String status) throws ClassNotFoundException, SQLException {
         Connection connection = null;
         
         Class.forName("com.mysql.jdbc.Driver");
+        
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
         
         int id = claim.getId();
         
@@ -275,6 +286,5 @@ public class DatabaseHandler {
         claimStm.setInt(2, id);
         
         claimStm.executeUpdate();
-        claimStm.close();
     }
 }

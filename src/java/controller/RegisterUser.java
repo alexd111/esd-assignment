@@ -8,6 +8,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,16 +18,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import model.Claim;
 import model.DatabaseHandler;
 import model.Member;
+import model.User;
 
 /**
  *
- * @author jackwinter
+ * @author Alex
  */
-public class MakeClaim extends HttpServlet {
+public class RegisterUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,37 +38,50 @@ public class MakeClaim extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
+            throws ServletException, IOException, ParseException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
+        String firstName = request.getParameter("firstname");
+        String lastName = request.getParameter("lastname");
+        String address = request.getParameter("address");
+        
+        String dob = request.getParameter("DOB");
+        SimpleDateFormat dobFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date dateOfBirth = dobFormat.parse(dob);
+        
+        Date registrationDate = new Date();
+        
+        String initial = firstName.substring(0, 1);
+        String userId = (initial + "-" + lastName).toLowerCase();
+        
+        Member member = new Member();
+        
+        member.setId(userId);
+        member.setName(firstName + " " + lastName);
+        member.setAddress(address);
+        member.setDob(dateOfBirth);
+        member.setDor(registrationDate);
+        member.setStatus("APPLIED");
+        member.setBalance(0);
+        
+        User user = new User();
+        
+        Date passwordDate = new SimpleDateFormat("yyyy-MM-dd").parse(dob);
+        
+        String password = new SimpleDateFormat("ddMMyy").format(passwordDate);
+        
+        user.setId(userId);
+        user.setPassword(password);
+        user.setStatus("APPLIED");
         
         DatabaseHandler db = new DatabaseHandler();
-
-        HttpSession session = request.getSession();
         
-        Member member = (Member) session.getAttribute("memberDetails");
-
-        String rationale = request.getParameter("rationale");
-        String amount = request.getParameter("amount");
-        String ID = member.getId();
+        db.addMember(member, user);
         
-        float amountFloat = Float.parseFloat(amount);
+        request.setAttribute("username", userId);
+        request.setAttribute("password", password);
         
-        
-        Claim claim = new Claim();
-        Date date = new Date();
-        
-        
-        claim.setAmount(amountFloat);
-        claim.setRationale(rationale);
-        claim.setClaimDate(date);
-        claim.setMemberID(ID);
-        claim.setStatus("SUBMITTED");
-        
-        db.addClaim(claim);
-
-        RequestDispatcher view = request.getRequestDispatcher("member-dashboard.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("welcome.jsp");
         view.forward(request, response);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -84,10 +98,12 @@ public class MakeClaim extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(MakeClaim.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MakeClaim.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -104,10 +120,12 @@ public class MakeClaim extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(MakeClaim.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParseException ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MakeClaim.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterUser.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
