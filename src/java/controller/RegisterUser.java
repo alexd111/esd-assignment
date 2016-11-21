@@ -61,7 +61,7 @@ public class RegisterUser extends HttpServlet {
         member.setDob(dateOfBirth);
         member.setDor(registrationDate);
         member.setStatus("APPLIED");
-        member.setBalance(0);
+        member.setBalance(-10);
         
         User user = new User();
         
