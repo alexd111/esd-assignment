@@ -189,7 +189,7 @@ public class DatabaseHandler {
         stm.setString(1, id);
         
         resultSet = stm.executeQuery();
-        stm.close();
+//        stm.close();
         
         while(resultSet.next()) {
             member.setId(resultSet.getString("id"));
@@ -218,7 +218,7 @@ public class DatabaseHandler {
         memberStm.setFloat(6, member.getBalance());
         
         memberStm.executeUpdate();
-        memberStm.close();
+//        memberStm.close();
         
         PreparedStatement userStm = connection.prepareStatement("INSERT INTO users VALUES (?,?,?)");
         
@@ -227,7 +227,7 @@ public class DatabaseHandler {
         userStm.setString(3, user.getStatus());
         
         userStm.executeUpdate();
-        userStm.close();
+//        userStm.close();
     }
     
     public void addClaim(Claim claim) throws ClassNotFoundException, SQLException {
@@ -244,7 +244,7 @@ public class DatabaseHandler {
         userStm.setFloat(5, claim.getAmount());
         
         userStm.executeUpdate();
-        userStm.close();
+//        userStm.close();
     }
     
     public void addPayment(Payment payment) throws SQLException, ClassNotFoundException {
@@ -260,7 +260,7 @@ public class DatabaseHandler {
         paymentStm.setDate(4, (Date) payment.getPaymentDate());
         
         paymentStm.executeUpdate();
-        paymentStm.close();
+//        paymentStm.close();
     }
     
     public void updateClaimStatus(Claim claim, String status) throws ClassNotFoundException, SQLException {
@@ -275,6 +275,6 @@ public class DatabaseHandler {
         claimStm.setInt(2, id);
         
         claimStm.executeUpdate();
-        claimStm.close();
+//        claimStm.close();
     }
 }

@@ -49,6 +49,8 @@ public class MemberDashboard extends HttpServlet {
         
         session.setAttribute("memberDetails", member);
         
+        Member member2 = (Member) session.getAttribute("memberDetails");
+        
         RequestDispatcher view = request.getRequestDispatcher("member-dashboard.jsp");
         view.forward(request, response);
     }

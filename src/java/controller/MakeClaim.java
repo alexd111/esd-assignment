@@ -61,6 +61,7 @@ public class MakeClaim extends HttpServlet {
         claim.setRationale(rationale);
         claim.setClaimDate(date);
         claim.setMemberID(ID);
+        claim.setStatus("SUBMITTED");
         
         db.addClaim(claim);
 
