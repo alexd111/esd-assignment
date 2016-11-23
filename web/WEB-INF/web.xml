@@ -49,6 +49,10 @@
         <servlet-name>MakePayment</servlet-name>
         <servlet-class>controller.MakePayment</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListAllClaims</servlet-name>
+        <servlet-class>controller.ListAllClaims</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers</url-pattern>
@@ -72,6 +76,10 @@
     <servlet-mapping>
         <servlet-name>MakePayment</servlet-name>
         <url-pattern>/MakePayment.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllClaims</servlet-name>
+        <url-pattern>/ListAllClaims.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

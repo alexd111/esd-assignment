@@ -13,7 +13,7 @@
     </head>
     <body>
         <h1>Submit Payment</h1>
-        <<form method="POST" action="MakePayment.do">
+        <form method="POST" action="MakePayment.do">
             Amount:<br>
             <input type="text" name="amount"><br>           
             <input type="SUBMIT">

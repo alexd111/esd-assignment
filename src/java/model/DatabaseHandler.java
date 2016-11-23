@@ -66,11 +66,12 @@ public class DatabaseHandler {
 
         while (resultSet.next()) {
             Claim claim = new Claim();
-            claim.setMemberID(resultSet.getString("id"));
+            claim.setMemberID(resultSet.getString("mem_id"));
             claim.setClaimDate(resultSet.getDate("date"));
             claim.setRationale(resultSet.getString("rationale"));
             claim.setStatus(resultSet.getString("status"));
-            claim.setAmount(resultSet.getFloat("id"));
+            claim.setAmount(resultSet.getFloat("amount"));
+            claim.setId(resultSet.getInt("id"));
             claims.add(claim);
         }
         return claims;

@@ -12,6 +12,6 @@
         <title>Ad-Dashboard</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <a href="ListAllClaims.do" class="button">List all pending claims</a>
     </body>
 </html>

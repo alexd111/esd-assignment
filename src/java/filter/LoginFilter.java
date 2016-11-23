@@ -48,7 +48,7 @@ public class LoginFilter implements Filter {
             if (userName.equals("admin") & (password.equals("admin"))){
                 HttpSession session = httpReq.getSession();
                 session.setAttribute("admin-authenticated", true);
-                RequestDispatcher view = request.getRequestDispatcher("ListAllMembers");
+                RequestDispatcher view = request.getRequestDispatcher("admin/admin-dashboard.jsp");
                 view.forward(httpReq, httpResp);
 //                httpResp.sendRedirect("ListAllMembers");
             }

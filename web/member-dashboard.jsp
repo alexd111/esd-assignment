@@ -18,19 +18,19 @@
             out.println("Login ID:");
             out.println(member.getId());
             out.println("<br>");
-            out.println("Name");
+            out.println("Name:");
             out.println(member.getName());
             out.println("<br>");
-            out.println("Address");
+            out.println("Address:");
             out.println(member.getAddress());
             out.println("<br>");
-            out.println("Approval status");
+            out.println("Approval status:");
             out.println(member.getStatus());
             out.println("<br>");
-            out.println("Account Balance");
+            out.println("Account Balance: £");
             out.println(member.getBalance());
             out.println("<br>");
-            out.println("Date of registration");
+            out.println("Date of registration: ");
             out.println(member.getDor());
         %>
         <br>
