@@ -9,9 +9,28 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Ad-Dashboard</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <title>Admin dashboard</title>
     </head>
     <body>
-        <a href="ListAllClaims.do" class="button">List all pending claims</a>
+        <nav>
+            <div class="nav-wrapper teal">
+                <a href="#" class="brand-logo center">XYZ Assoc.</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+
+                </ul>
+            </div>
+        </nav>
+        
+        <div class="container">
+            <br>
+            <br>
+            <a href="ListAllClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all pending claims</a>
+        </div>
     </body>
 </html>

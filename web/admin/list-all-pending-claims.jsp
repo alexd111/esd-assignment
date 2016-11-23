@@ -13,33 +13,49 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+        <title>Claims</title>
     </head>
     <body>
-        <table>
-            <tr><th>User</th><th>Amount</th><th>Rationale</th><th>Date</th></tr>
+        <nav>
+            <div class="nav-wrapper teal">
+                <a href="#" class="brand-logo center">XYZ Assoc.</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
 
-            <%
-                List<Claim> claims = (List) session.getAttribute("claimList");
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <br>
+            <table class="highlight">
+                <tr><th>User</th><th>Amount</th><th>Rationale</th><th>Date</th></tr>
 
-                if (claims != null) {
-                    Iterator<Claim> it = claims.iterator();
+                <%
+                    List<Claim> claims = (List) session.getAttribute("claimList");
 
-                    while (it.hasNext()) {
-                        Claim claim = it.next();
-                        if (claim.getStatus().equals("SUBMITTED")) {
-                            out.println("<tr>");
-                            out.println("<td>" + claim.getMemberID() + "</td>");
-                            out.println("<td>" + claim.getAmount() + "</td>");
-                            out.println("<td>" + claim.getRationale() + "</td>");
-                            out.println("<td>" + claim.getClaimDate() + "</td>");
-                            out.println("</tr>");
+                    if (claims != null) {
+                        Iterator<Claim> it = claims.iterator();
+
+                        while (it.hasNext()) {
+                            Claim claim = it.next();
+                            if (claim.getStatus().equals("SUBMITTED")) {
+                                out.println("<tr>");
+                                out.println("<td>" + claim.getMemberID() + "</td>");
+                                out.println("<td>" + claim.getAmount() + "</td>");
+                                out.println("<td>" + claim.getRationale() + "</td>");
+                                out.println("<td>" + claim.getClaimDate() + "</td>");
+                                out.println("</tr>");
+                            }
                         }
                     }
-                }
-            %>
+                %>
 
-        </table>
-
+            </table>
+        </div>
     </body>
 </html>

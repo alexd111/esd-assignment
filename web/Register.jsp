@@ -24,7 +24,7 @@
             </ul>
         </div>
     </nav>
-    
+
     <div class="container">
         <h3>Registration Form</h3>
         <div class="row">
@@ -48,7 +48,9 @@
                         <input id="DOB" type="date" name="DOB">
                     </div>
                 </div>
-                <input type="submit" value="Submit">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                    <i class="material-icons right">send</i>
+                </button>
             </form>
         </div>
     </div>
