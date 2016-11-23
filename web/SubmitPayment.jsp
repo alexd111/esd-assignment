@@ -13,11 +13,9 @@
     </head>
     <body>
         <h1>Submit Payment</h1>
-        <<form method="POST" action="SubmitPayment">
+        <<form method="POST" action="MakePayment.do">
             Amount:<br>
             <input type="text" name="amount"><br>           
-            Enter Rationale:<br>
-            <textarea name="rationale" rows="10" cols="30"></textarea>
             <input type="SUBMIT">
         </form>
      

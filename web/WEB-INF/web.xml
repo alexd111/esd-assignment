@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <filter>
         <filter-name>UserLogin</filter-name>
-        <filter-class>controller.LoginFilter</filter-class>
+        <filter-class>filter.LoginFilter</filter-class>
     </filter>
     <filter>
         <filter-name>AdminAuth</filter-name>
-        <filter-class>controller.AdminFilter</filter-class>
+        <filter-class>filter.AdminFilter</filter-class>
     </filter>
     <filter>
         <filter-name>UserAuth</filter-name>
-        <filter-class>controller.UserFilter</filter-class>
+        <filter-class>filter.UserFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>UserLogin</filter-name>
@@ -23,7 +23,7 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserAuth</filter-name>
-        <url-pattern>/member-dashboard</url-pattern>
+        <url-pattern>/member-dashboard.jsp</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>ListAllMembers</servlet-name>
@@ -45,6 +45,10 @@
         <servlet-name>RegisterUser</servlet-name>
         <servlet-class>controller.RegisterUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>MakePayment</servlet-name>
+        <servlet-class>controller.MakePayment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers</url-pattern>
@@ -64,6 +68,10 @@
     <servlet-mapping>
         <servlet-name>RegisterUser</servlet-name>
         <url-pattern>/RegisterUser.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MakePayment</servlet-name>
+        <url-pattern>/MakePayment.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

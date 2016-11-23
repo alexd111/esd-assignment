@@ -264,10 +264,12 @@ public class DatabaseHandler {
 
         PreparedStatement paymentStm = connection.prepareStatement("INSERT INTO payments (mem_id,type_of_payment,amount,date) VALUES (?,?,?,?)");
 
+        java.sql.Date paymentSqlDate = new java.sql.Date(payment.getPaymentDate().getTime());
+        
         paymentStm.setString(1, payment.getMemberID());
         paymentStm.setString(2, payment.getPaymentType());
         paymentStm.setFloat(3, payment.getAmount());
-        paymentStm.setDate(4, (Date) payment.getPaymentDate());
+        paymentStm.setDate(4, paymentSqlDate);
 
         paymentStm.executeUpdate();
     }

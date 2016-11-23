@@ -33,7 +33,11 @@
             out.println("Date of registration");
             out.println(member.getDor());
         %>
-            
+        <br>
+        <a href="user-dashboard.jsp" class="button">Submit claim</a>
+        <br>
+        <a href="SubmitPayment.jsp" class="button">Submit payment</a>
+        <br>
         <a href="Logout" class="button">Logout</a>
     </body>
 </html>
