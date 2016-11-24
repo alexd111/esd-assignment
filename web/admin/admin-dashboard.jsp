@@ -31,6 +31,9 @@
             <br>
             <br>
             <a href="ListAllClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all pending claims</a>
+            <br>
+            <br>
+            <a href="../Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
         </div>
     </body>
 </html>

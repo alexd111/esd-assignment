@@ -33,7 +33,7 @@
         <div class="container">
             <br>
             <table class="highlight">
-                <tr><th>User</th><th>Amount</th><th>Rationale</th><th>Date</th></tr>
+                <tr><th>User</th><th>Amount(£)</th><th>Rationale</th><th>Date</th><th>Approve/Reject</th></tr>
 
                 <%
                     List<Claim> claims = (List) session.getAttribute("claimList");
@@ -49,13 +49,37 @@
                                 out.println("<td>" + claim.getAmount() + "</td>");
                                 out.println("<td>" + claim.getRationale() + "</td>");
                                 out.println("<td>" + claim.getClaimDate() + "</td>");
-                                out.println("</tr>");
+                                out.print("<td><a class='waves-effect waves-light btn green approve' id='" + Integer.toString(claim.getId()));
+                                out.print("'><i class='material-icons'>done</i></a>");
+                                out.print("<a class='waves-effect waves-light btn red reject' id='" + Integer.toString(claim.getId()));
+                                out.print("'><i class='material-icons'>clear</i></td>");
+                                out.print("</tr>");
                             }
                         }
                     }
                 %>
 
             </table>
+            <br>
+            <br>
+            <a href="admin/admin-dashboard.jsp" class="button waves-effect waves-light btn"><i class="material-icons">home</i></a>
+            <br>
+            <br>
+            <a href="Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
         </div>
+        <script>
+            $(".approve").click(function () {
+                $.post('UpdateClaim.do', {claim: this.id, status: "APPROVED"},
+                        function (returnedData) {
+                            location.reload();
+                        });
+            });
+            $(".reject").click(function () {
+                $.post('UpdateClaim.do', {claim: this.id, status: "REJECTED"},
+                        function (returnedData) {
+                            location.reload();
+                        });
+            });
+        </script>
     </body>
 </html>

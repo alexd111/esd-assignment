@@ -28,7 +28,7 @@
         </nav>
 
         <div class="container">
-            <h3>Registration Form</h3>
+            <h3>Log in</h3>
             <div class="row">
                 <form class="col s12" action="MemberLogin.do" method="POST">
                     <div class="row" >

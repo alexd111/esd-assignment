@@ -36,14 +36,14 @@
                                     out.println("</tr>");
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             out.println("You haven't logged in as an admin");
                         }
 
                     %>
         </table>
         <br>
-        <a href="Logout" class="button">Logout</a>
+        <br>
+        <a href="Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
     </body>
 </html>

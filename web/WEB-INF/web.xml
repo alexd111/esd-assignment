@@ -53,6 +53,10 @@
         <servlet-name>ListAllClaims</servlet-name>
         <servlet-class>controller.ListAllClaims</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateClaim</servlet-name>
+        <servlet-class>controller.UpdateClaim</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers</url-pattern>
@@ -80,6 +84,10 @@
     <servlet-mapping>
         <servlet-name>ListAllClaims</servlet-name>
         <url-pattern>/ListAllClaims.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateClaim</servlet-name>
+        <url-pattern>/UpdateClaim.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
