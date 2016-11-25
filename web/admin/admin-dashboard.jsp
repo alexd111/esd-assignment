@@ -30,10 +30,16 @@
         <div class="container">
             <br>
             <br>
-            <a href="ListAllClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all pending claims</a>
+            <a href="/esd-assignment/ListAllClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all pending claims</a>
             <br>
             <br>
-            <a href="../Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
+            <a href="/esd-assignment/ListAllMembers.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all pending members</a>
+            <br>
+            <br>
+            <a href="/esd-assignment/ListMembers.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all members</a>
+            <br>
+            <br>
+            <a href="/esd-assignment/Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
         </div>
     </body>
 </html>

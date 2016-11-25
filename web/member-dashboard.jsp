@@ -21,7 +21,7 @@
     <body>
         <nav>
             <div class="nav-wrapper teal">
-                <a href="#" class="brand-logo center">XYZ Assoc.</a>
+                <a class="brand-logo center">XYZ Assoc.</a>
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
 
                 </ul>
@@ -51,13 +51,13 @@
             %>
             <br>
             <br>
-            <a href="user-dashboard.jsp" class="button waves-effect waves-light btn"><i class="material-icons right">assignment</i>Submit claim</a>
+            <a href="/esd-assignment/user-dashboard.jsp" class="button waves-effect waves-light btn"><i class="material-icons right">assignment</i>Submit claim</a>
             <br>
             <br>
             <a href="SubmitPayment.jsp" class="button waves-effect waves-light btn"><i class="material-icons right">payment</i>Submit payment</a>
             <br>
             <br>
-            <a href="Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
+            <a href="/esd-assignment/Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
         </div>
     </body>
 </html>

@@ -27,7 +27,7 @@
     </filter-mapping>
     <servlet>
         <servlet-name>ListAllMembers</servlet-name>
-        <servlet-class>controller.ListAllMembers</servlet-class>
+        <servlet-class>controller.ListAllAppliedMembers</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MemberLogin</servlet-name>
@@ -57,9 +57,17 @@
         <servlet-name>UpdateClaim</servlet-name>
         <servlet-class>controller.UpdateClaim</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateMemberStatus</servlet-name>
+        <servlet-class>controller.UpdateMemberStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListMembers</servlet-name>
+        <servlet-class>controller.ListMembers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
-        <url-pattern>/ListAllMembers</url-pattern>
+        <url-pattern>/ListAllMembers.do</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MemberLogin</servlet-name>
@@ -88,6 +96,14 @@
     <servlet-mapping>
         <servlet-name>UpdateClaim</servlet-name>
         <url-pattern>/UpdateClaim.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateMemberStatus</servlet-name>
+        <url-pattern>/UpdateMemberStatus.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListMembers</servlet-name>
+        <url-pattern>/ListMembers.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

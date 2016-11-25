@@ -289,6 +289,28 @@ public class DatabaseHandler {
         claimStm.executeUpdate();
     }
     
+    public void updateMemberStatus(String id, String status) throws SQLException, ClassNotFoundException {
+        Connection connection = null;
+
+        Class.forName("com.mysql.jdbc.Driver");
+
+        connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
+
+        PreparedStatement memberStm = connection.prepareStatement("UPDATE members SET status=? WHERE id=?");
+        memberStm.setString(1, status);
+        memberStm.setString(2, id);
+        
+        memberStm.executeUpdate();
+        
+        PreparedStatement userStm = connection.prepareStatement("UPDATE users SET status=? WHERE id=?");
+        userStm.setString(1, status);
+        memberStm.setString(2, id);
+        
+        userStm.executeUpdate();
+        
+        userStm.executeUpdate();
+    }
+    
     public void updateMemberBalance(String memberId, float amount) throws ClassNotFoundException, SQLException {
         Connection connection = null;
 

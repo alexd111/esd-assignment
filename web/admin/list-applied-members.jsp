@@ -1,13 +1,12 @@
 <%-- 
-    Document   : list-all-pending-members
-    Created on : 23-Nov-2016, 14:05:43
+    Document   : list-applied-members
+    Created on : 25-Nov-2016, 14:27:48
     Author     : Alex
 --%>
 
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="model.Claim"%>
-<%@page import="model.Claim"%>
+<%@page import="model.Member"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +18,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-        <title>Claims</title>
+        <title>Applied members</title>
     </head>
     <body>
         <nav>
@@ -30,28 +29,30 @@
                 </ul>
             </div>
         </nav>
+
         <div class="container">
             <br>
             <table class="highlight">
-                <tr><th>User</th><th>Amount(£)</th><th>Rationale</th><th>Date</th><th>Approve/Reject</th></tr>
+                <tr><th>Member ID</th><th>Name</th><th>address</th><th>DOB</th><th>DOR</th><th>Approve/Reject</th></tr>
 
                 <%
-                    List<Claim> claims = (List) session.getAttribute("claimList");
+                    List<Member> members = (List) session.getAttribute("memberList");
 
-                    if (claims != null) {
-                        Iterator<Claim> it = claims.iterator();
+                    if (members != null) {
+                        Iterator<Member> it = members.iterator();
 
                         while (it.hasNext()) {
-                            Claim claim = it.next();
-                            if (claim.getStatus().equals("SUBMITTED")) {
+                            Member member = it.next();
+                            if (member.getStatus().equals("APPLIED")) {
                                 out.println("<tr>");
-                                out.println("<td>" + claim.getMemberID() + "</td>");
-                                out.println("<td>" + claim.getAmount() + "</td>");
-                                out.println("<td>" + claim.getRationale() + "</td>");
-                                out.println("<td>" + claim.getClaimDate() + "</td>");
-                                out.print("<td><a class='waves-effect waves-light btn green approve' id='" + Integer.toString(claim.getId()));
+                                out.println("<td>" + member.getId() + "</td>");
+                                out.println("<td>" + member.getName() + "</td>");
+                                out.println("<td>" + member.getAddress() + "</td>");
+                                out.println("<td>" + member.getDob() + "</td>");
+                                out.println("<td>" + member.getDor() + "</td>");
+                                out.print("<td><a class='waves-effect waves-light btn green approve' id='" + member.getId());
                                 out.print("'><i class='material-icons'>done</i></a>");
-                                out.print("<a class='waves-effect waves-light btn red reject' id='" + Integer.toString(claim.getId()));
+                                out.print("<a class='waves-effect waves-light btn red reject' id='" + member.getId());
                                 out.print("'><i class='material-icons'>clear</i></td>");
                                 out.print("</tr>");
                             }
@@ -67,15 +68,15 @@
             <br>
             <a href="/esd-assignment/Logout" class="button waves-effect waves-light btn red"><i class="material-icons right"></i>Logout</a>
         </div>
-        <script>
+                 <script>
             $(".approve").click(function () {
-                $.post('UpdateClaim.do', {claim: this.id, status: "APPROVED"},
+                $.post('UpdateMemberStatus.do', {member: this.id, status: "APPROVED"},
                         function (returnedData) {
                             location.reload();
                         });
             });
             $(".reject").click(function () {
-                $.post('UpdateClaim.do', {claim: this.id, status: "REJECTED"},
+                $.post('UpdateMemberStatus.do', {member: this.id, status: "SUSPENDED"},
                         function (returnedData) {
                             location.reload();
                         });
