@@ -304,7 +304,7 @@ public class DatabaseHandler {
         
         PreparedStatement userStm = connection.prepareStatement("UPDATE users SET status=? WHERE id=?");
         userStm.setString(1, status);
-        memberStm.setString(2, id);
+        userStm.setString(2, id);
         
         userStm.executeUpdate();
         
