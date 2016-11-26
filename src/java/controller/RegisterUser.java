@@ -43,6 +43,7 @@ public class RegisterUser extends HttpServlet {
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String address = request.getParameter("address");
+        String postcode = request.getParameter("postcode");
         
         String dob = request.getParameter("DOB");
         SimpleDateFormat dobFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,7 +58,7 @@ public class RegisterUser extends HttpServlet {
         
         member.setId(userId);
         member.setName(firstName + " " + lastName);
-        member.setAddress(address);
+        member.setAddress(address + " " + postcode);
         member.setDob(dateOfBirth);
         member.setDor(registrationDate);
         member.setStatus("APPLIED");

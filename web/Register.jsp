@@ -41,14 +41,27 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="address" type="text" name="address">
-                        <label for="address">Address</label>
+                        <input id="postcode" type="text" name="postcode">
+                        <label for="postcode">Postcode</label>
                     </div>
                     <div class="input-field col s6 tooltipped" data-position="bottom" data-tooltip="Date of birth">
                         <input id="DOB" type="date" name="DOB">
                     </div>
                 </div>
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id="addressChooser" name="address">
+                            
+                        </select>
+                        <label>Select address</label>
+                    </div>
+                </div>
+                <button class="btn waves-effect waves-light" type="button" id="lookup" >Lookup postcode
+                    <i class="material-icons right">search</i>
+                </button>
+                <br>
+                <br>
+                <button class="btn waves-effect waves-light disabled" id="submitButton" type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                 </button>
             </form>
@@ -61,6 +74,26 @@
     <script>
         $('.datepicker').pickadate({
             formatSubmit: 'yyyy-mm-dd'
+        });
+        $(document).ready(function () {
+            $('select').material_select();
+        });
+        $("#lookup").click(function () {
+            var postcode = $('#postcode').val();
+            var apiKey = "J7H5TSlc4kWLDxw6NFqnZQ6512"
+            var url = "https://api.getAddress.io/v2/uk/" + postcode + "?api-key=" + apiKey;
+
+            $.ajax({
+                url: url,
+                dataType: 'json',
+                success: function (result) {
+                    console.log(result.Addresses);
+                    for (i = 0; i < result.Addresses.length; i++) {
+                        $("#addressChooser").append("<option value='" + result.Addresses[i] + "'>" + result.Addresses[i] + "</option>");
+                    }
+                    $('select').material_select();
+                    $("#submitButton").removeClass("disabled");
+                }});
         });
     </script>
 </body>
