@@ -49,9 +49,11 @@ CREATE TABLE IF NOT EXISTS `Claims` (
 
 TRUNCATE TABLE `Claims`;
 
-INSERT INTO `Members` (`id`, `mem_id`, `date`, `rationale`, `status`, `amount`) VALUES
-('', 'me-aydin', '2016-01-27, Damage to the front bumper', 'APPROVED', 90);
-('', 'me-aydin', '2016-09-15, Damage to right wing mirror', 'APPROVED', 50);
+INSERT INTO `Claims` (`mem_id`, `date`, `rationale`, `status`, `amount`) VALUES
+('me-aydin', '2016-01-27', 'Damage to the front bumper', 'APPROVED', 90);
+
+INSERT INTO `Claims` (`mem_id`, `date`, `rationale`, `status`, `amount`) VALUES
+('me-aydin', '2016-09-15', 'Damage to right wing mirror', 'APPROVED', 50);
 -- --------------------------------------------------------
 
 --
@@ -85,6 +87,27 @@ TRUNCATE TABLE `Members`;
 
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
 ('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('j-atkinson', 'Joel Atkinson', '3 Annfield Rd, BEARWOOD, BH11 7EF', '1980-11-20', '2016-01-23', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+
 
 -- --------------------------------------------------------
 
