@@ -48,6 +48,10 @@ CREATE TABLE IF NOT EXISTS `Claims` (
 --
 
 TRUNCATE TABLE `Claims`;
+
+INSERT INTO `Members` (`id`, `mem_id`, `date`, `rationale`, `status`, `amount`) VALUES
+('', 'me-aydin', '2016-01-27, Damage to the front bumper', 'APPROVED', 90);
+('', 'me-aydin', '2016-09-15, Damage to right wing mirror', 'APPROVED', 50);
 -- --------------------------------------------------------
 
 --
