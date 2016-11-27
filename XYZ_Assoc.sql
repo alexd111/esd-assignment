@@ -98,7 +98,7 @@ INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
 ('m-davis', 'Mike Davis', '1 Green St, London, LN1 5PQ', '1975-07-12', '2015-06-20', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('s-evans', 'Susan Evans', '17 Baker St, Bristol, BS10 1UX', '1973-09-28', '2016-10-16', 'APPLIED', 0);
+('s-evans', 'Susan Evans', '17 Baker St, Bristol, BS10 1UH', '1973-09-28', '2016-10-16', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
 ('k-holland', 'Kim Holland', '16 Sesh Rd, London, L3 7SG', '1980-10-20', '2015-05-219', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
