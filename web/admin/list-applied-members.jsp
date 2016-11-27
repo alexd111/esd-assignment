@@ -33,7 +33,7 @@
         <div class="container">
             <br>
             <table class="highlight">
-                <tr><th>Member ID</th><th>Name</th><th>address</th><th>DOB</th><th>DOR</th><th>Approve/Reject</th></tr>
+                <tr><th>Member ID</th><th>Name</th><th>address</th><th>DOB</th><th>DOR</th><th>Balance</th><th>Approve/Reject</th></tr>
 
                 <%
                     List<Member> members = (List) session.getAttribute("memberList");
@@ -50,6 +50,7 @@
                                 out.println("<td>" + member.getAddress() + "</td>");
                                 out.println("<td>" + member.getDob() + "</td>");
                                 out.println("<td>" + member.getDor() + "</td>");
+                                out.println("<td>£" + member.getBalance() + "</td>");
                                 out.print("<td><a class='waves-effect waves-light btn green approve' id='" + member.getId());
                                 out.print("'><i class='material-icons'>done</i></a>");
                                 out.print("<a class='waves-effect waves-light btn red reject' id='" + member.getId());

@@ -33,7 +33,7 @@
         <div class="container">
             <br>
             <table class="highlight">
-                <tr><th>User</th><th>Amount(£)</th><th>Rationale</th><th>Date</th><th>Approve/Reject</th></tr>
+                <tr><th>User</th><th>Amount(£)</th><th>Rationale</th><th>Date</th><th>Status</th><th>Approve/Reject</th></tr>
 
                 <%
                     List<Claim> claims = (List) session.getAttribute("claimList");
@@ -43,18 +43,19 @@
 
                         while (it.hasNext()) {
                             Claim claim = it.next();
-                            if (claim.getStatus().equals("SUBMITTED")) {
-                                out.println("<tr>");
-                                out.println("<td>" + claim.getMemberID() + "</td>");
-                                out.println("<td>" + claim.getAmount() + "</td>");
-                                out.println("<td>" + claim.getRationale() + "</td>");
-                                out.println("<td>" + claim.getClaimDate() + "</td>");
-                                out.print("<td><a class='waves-effect waves-light btn green approve' id='" + Integer.toString(claim.getId()));
-                                out.print("'><i class='material-icons'>done</i></a>");
-                                out.print("<a class='waves-effect waves-light btn red reject' id='" + Integer.toString(claim.getId()));
-                                out.print("'><i class='material-icons'>clear</i></td>");
-                                out.print("</tr>");
-                            }
+
+                            out.println("<tr>");
+                            out.println("<td>" + claim.getMemberID() + "</td>");
+                            out.println("<td>£" + claim.getAmount() + "</td>");
+                            out.println("<td>" + claim.getRationale() + "</td>");
+                            out.println("<td>" + claim.getClaimDate() + "</td>");
+                            out.println("<td>" + claim.getStatus() + "</td>");
+                            out.print("<td><a class='waves-effect waves-light btn green approve' id='" + Integer.toString(claim.getId()));
+                            out.print("'><i class='material-icons'>done</i></a>");
+                            out.print("<a class='waves-effect waves-light btn red reject' id='" + Integer.toString(claim.getId()));
+                            out.print("'><i class='material-icons'>clear</i></td>");
+                            out.print("</tr>");
+
                         }
                     }
                 %>

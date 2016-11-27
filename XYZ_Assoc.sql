@@ -86,23 +86,23 @@ TRUNCATE TABLE `Members`;
 --
 
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPLIED', 0);
+('me-aydin', 'Mehmet Aydin', '148 Station Rd, London, N3 2SG', '1968-10-20', '2015-01-26', 'APPROVED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
 ('j-atkinson', 'Joel Atkinson', '3 Annfield Rd, Bearwood, BH11 7EF', '1980-11-20', '2016-01-23', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('b-walters', 'Ben Walters', '18 Memory Rd, Cardiff, CF18 8QW', '1983-10-18', '2016-03-26', 'APPLIED', 0);
+('b-walters', 'Ben Walters', '18 Memory Rd, Cardiff, CF18 8QW', '1983-10-18', '2016-03-26', 'SUSPENDED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
 ('s-gerrard', 'Stevie Gerrard', '15 Alegend Rd, Liverpool, L1 8LV', '1980-05-30', '2016-11-24', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('m-channon', 'Mick Channon', '228 Upfront Rd, Southampton, S9 2SO', '1948-11-28', '2015-10-17', 'APPLIED', 0);
+('m-channon', 'Mick Channon', '228 Upfront Rd, Southampton, S9 2SO', '1948-11-28', '2015-10-17', 'APPROVED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('m-davis', 'Mike Davis', '1 Green St, London, LN1 5PQ', '1975-07-12', '2015-06-20', 'APPLIED', 0);
+('m-davis', 'Mike Davis', '1 Green St, London, LN1 5PQ', '1975-07-12', '2015-06-20', 'SUSPENDED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('s-evans', 'Susan Evans', '17 Baker St, Bristol, BS10 1UH', '1973-09-28', '2016-10-16', 'APPLIED', 0);
+('s-evans', 'Susan Evans', '17 Baker St, Bristol, BS10 1UH', '1973-09-28', '2016-10-16', 'APPROVED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('k-holland', 'Kim Holland', '16 Sesh Rd, London, L3 7SG', '1980-10-20', '2015-05-219', 'APPLIED', 0);
+('k-holland', 'Kim Holland', '16 Sesh Rd, London, L3 7SG', '1980-10-20', '2015-05-21', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
-('e-frand', 'Emma Frand', '10 Local Rd, Bristol, BS11 2FG', '1974-03-20', '2015-01-21', 'APPLIED', 0);
+('e-frand', 'Emma Frand', '10 Local Rd, Bristol, BS11 2FG', '1974-03-20', '2015-01-21', 'SUSPENDED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
 ('a-tompson', 'Anna Tompson', '132, Brook Ln, RE7 1JG', '1988-04-22', '2015-03-14', 'APPLIED', 0);
 INSERT INTO `Members` (`id`, `name`, `address`, `dob`, `dor`, `status`, `balance`) VALUES
@@ -166,23 +166,23 @@ TRUNCATE TABLE `users`;
 --
 
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('me-aydin', '201068', 'APPLIED');
+('me-aydin', '201068', 'APPROVED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
 ('j-atkinson','201180', 'APPLIED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('b-walters', '181083', 'APPLIED');
+('b-walters', '181083', 'SUSPENDED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('s-gerrard', '300580', 'APPLIED';
+('s-gerrard', '300580', 'APPLIED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('m-channon', '281148', 'APPLIED');
+('m-channon', '281148', 'APPROVED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('m-davis', '120775', 'APPLIED');
+('m-davis', '120775', 'SUSPENDED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('s-evans', '280973', 'APPLIED');
+('s-evans', '280973', 'APPROVED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
 ('k-holland','201080', 'APPLIED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
-('e-frand', '200374', 'APPLIED');
+('e-frand', '200374', 'SUSPENDED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
 ('a-tompson', '220488', 'APPLIED');
 INSERT INTO `users` (`id`, `password`, `status`) VALUES
