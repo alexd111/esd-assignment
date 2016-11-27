@@ -58,7 +58,7 @@ public class RegisterUser extends HttpServlet {
         
         member.setId(userId);
         member.setName(firstName + " " + lastName);
-        member.setAddress(address + " " + postcode);
+        member.setAddress(address + ", " + postcode);
         member.setDob(dateOfBirth);
         member.setDor(registrationDate);
         member.setStatus("APPLIED");
