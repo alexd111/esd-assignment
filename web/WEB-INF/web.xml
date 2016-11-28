@@ -69,6 +69,10 @@
         <servlet-name>ClaimCharge</servlet-name>
         <servlet-class>controller.ClaimCharge</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListMemberClaims</servlet-name>
+        <servlet-class>controller.ListMemberClaims</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers.do</url-pattern>
@@ -112,6 +116,10 @@
     <servlet-mapping>
         <servlet-name>ClaimCharge</servlet-name>
         <url-pattern>/ClaimCharge.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListMemberClaims</servlet-name>
+        <url-pattern>/ListMemberClaims.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

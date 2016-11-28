@@ -54,6 +54,9 @@
             <a href="/esd-assignment/user-dashboard.jsp" class="button waves-effect waves-light btn"><i class="material-icons right">assignment</i>Submit claim</a>
             <br>
             <br>
+            <a href="ListMemberClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">assignment</i>View submitted claims</a>
+            <br>
+            <br>
             <a href="SubmitPayment.jsp" class="button waves-effect waves-light btn"><i class="material-icons right">payment</i>Submit payment</a>
             <br>
             <br>

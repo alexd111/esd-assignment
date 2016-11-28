@@ -88,7 +88,12 @@ public class DatabaseHandler {
         connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
 
         statement = connection.createStatement();
-        resultSet = statement.executeQuery("SELECT * FROM claims WHERE mem_id=" + id);
+        PreparedStatement stm = connection.prepareStatement("SELECT * FROM claims WHERE mem_id=?");
+        
+        stm.setString(1, id);
+        
+        
+        resultSet = stm.executeQuery();
 
         List<Claim> claims = new ArrayList<Claim>();
 
@@ -98,7 +103,7 @@ public class DatabaseHandler {
             claim.setClaimDate(resultSet.getDate("date"));
             claim.setRationale(resultSet.getString("rationale"));
             claim.setStatus(resultSet.getString("status"));
-            claim.setAmount(resultSet.getFloat("id"));
+            claim.setAmount(resultSet.getFloat("amount"));
             claims.add(claim);
         }
         return claims;
