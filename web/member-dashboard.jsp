@@ -57,6 +57,9 @@
             <a href="ListMemberClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">assignment</i>View submitted claims</a>
             <br>
             <br>
+            <a href="ListMemberPayments.do" class="button waves-effect waves-light btn"><i class="material-icons right">assignment</i>View payments</a>
+            <br>
+            <br>
             <a href="SubmitPayment.jsp" class="button waves-effect waves-light btn"><i class="material-icons right">payment</i>Submit payment</a>
             <br>
             <br>

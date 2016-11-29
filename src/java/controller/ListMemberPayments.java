@@ -8,7 +8,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Claim;
 import model.DatabaseHandler;
 import model.Member;
 import model.Payment;
@@ -25,7 +26,7 @@ import model.Payment;
  *
  * @author Alex
  */
-public class MakePayment extends HttpServlet {
+public class ListMemberPayments extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,40 +38,20 @@ public class MakePayment extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, ClassNotFoundException {
+            throws ServletException, IOException, ClassNotFoundException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-        DatabaseHandler db = new DatabaseHandler();
-
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        
         HttpSession session = request.getSession();
         
         Member member = (Member) session.getAttribute("memberDetails");
-        String ID = member.getId();
         
-        String amount = request.getParameter("amount");
+        List<Payment> paymentList = dbHandler.getMemberPayments(member);
         
-        float amountFloat = Float.parseFloat(amount);
+        session.setAttribute("paymentList", paymentList);
         
-        Payment payment = new Payment();
-        Date date = new Date();
-        
-        payment.setAmount(amountFloat);
-        payment.setMemberID(ID);
-        payment.setPaymentDate(date);
-        payment.setPaymentType("FEE");
-        
-        db.addPayment(payment);
-        
-        float memberBalance = member.getBalance();
-        
-        float newMemberBalance = memberBalance - amountFloat;
-        
-        db.updateMemberBalance(ID, newMemberBalance);
-        
-        member.setBalance(newMemberBalance);
-        
-        session.setAttribute("memberDetails", member);
-        
-        RequestDispatcher view = request.getRequestDispatcher("member-dashboard.jsp");
+        RequestDispatcher view = request.getRequestDispatcher("user-payments.jsp");
+
         view.forward(request, response);
     }
 
@@ -88,10 +69,10 @@ public class MakePayment extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(MakePayment.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MakePayment.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListMemberPayments.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListMemberPayments.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -108,10 +89,10 @@ public class MakePayment extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (SQLException ex) {
-            Logger.getLogger(MakePayment.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MakePayment.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ListMemberPayments.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ListMemberPayments.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

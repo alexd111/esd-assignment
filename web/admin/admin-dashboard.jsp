@@ -33,6 +33,9 @@
             <a href="/esd-assignment/ListAllClaims.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all claims</a>
             <br>
             <br>
+            <a href="/esd-assignment/ListAllPayments.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all payments</a>
+            <br>
+            <br>
             <a href="/esd-assignment/ListAllMembers.do" class="button waves-effect waves-light btn"><i class="material-icons right">list</i>List all pending members</a>
             <br>
             <br>

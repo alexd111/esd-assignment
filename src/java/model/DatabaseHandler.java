@@ -119,16 +119,17 @@ public class DatabaseHandler {
         connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
 
         statement = connection.createStatement();
+        
         resultSet = statement.executeQuery("SELECT * FROM payments");
 
         List<Payment> payments = new ArrayList<Payment>();
 
         while (resultSet.next()) {
             Payment payment = new Payment();
-            payment.setMemberID(resultSet.getString("id"));
+            payment.setMemberID(resultSet.getString("mem_id"));
             payment.setPaymentType(resultSet.getString("type_of_payment"));
             payment.setAmount(resultSet.getFloat("amount"));
-            payment.setPaymentDate(resultSet.getDate("id"));
+            payment.setPaymentDate(resultSet.getDate("date"));
             payments.add(payment);
         }
         return payments;
@@ -144,17 +145,23 @@ public class DatabaseHandler {
 
         connection = DriverManager.getConnection("jdbc:mysql://localhost/xyz_assoc", "root", "");
 
-        statement = connection.createStatement();
-        resultSet = statement.executeQuery("SELECT * FROM payments WHERE mem_id=" + id);
+        
+        
+        PreparedStatement stm = connection.prepareStatement("SELECT * FROM payments WHERE mem_id=?");
+        
+        stm.setString(1, id);
+        
+        
+        resultSet = stm.executeQuery();
 
         List<Payment> payments = new ArrayList<Payment>();
 
         while (resultSet.next()) {
             Payment payment = new Payment();
-            payment.setMemberID(resultSet.getString("id"));
+            payment.setMemberID(resultSet.getString("mem_id"));
             payment.setPaymentType(resultSet.getString("type_of_payment"));
             payment.setAmount(resultSet.getFloat("amount"));
-            payment.setPaymentDate(resultSet.getDate("id"));
+            payment.setPaymentDate(resultSet.getDate("date"));
             payments.add(payment);
         }
         return payments;

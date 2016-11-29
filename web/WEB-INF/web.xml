@@ -76,6 +76,14 @@
         <servlet-name>ListMemberClaims</servlet-name>
         <servlet-class>controller.ListMemberClaims</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ListMemberPayments</servlet-name>
+        <servlet-class>controller.ListMemberPayments</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ListAllPayments</servlet-name>
+        <servlet-class>controller.ListAllPayments</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ListAllMembers</servlet-name>
         <url-pattern>/ListAllMembers.do</url-pattern>
@@ -123,6 +131,14 @@
     <servlet-mapping>
         <servlet-name>ListMemberClaims</servlet-name>
         <url-pattern>/ListMemberClaims.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListMemberPayments</servlet-name>
+        <url-pattern>/ListMemberPayments.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ListAllPayments</servlet-name>
+        <url-pattern>/ListAllPayments.do</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
