@@ -19,11 +19,14 @@
     <filter-mapping>
         <filter-name>AdminAuth</filter-name>
         <url-pattern>/ListAllMembers</url-pattern>
-        <url-pattern>/admin/list-all-members.jsp</url-pattern>
+        <url-pattern>/admin/*</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserAuth</filter-name>
-        <url-pattern>/member-dashboard.jsp</url-pattern>
+        <url-pattern>/esd-assignment/member-dashboard.jsp</url-pattern>
+        <url-pattern>/SubmitPayment.jsp</url-pattern>
+        <url-pattern>/user-claims.jsp</url-pattern>
+        <url-pattern>/user-dashboard.jsp</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>ListAllMembers</servlet-name>

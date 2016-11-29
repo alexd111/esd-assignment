@@ -21,32 +21,34 @@ import javax.servlet.http.HttpSession;
  * @author Alex
  */
 public class UserFilter implements Filter {
-    
+
     private FilterConfig fc;
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         this.fc = filterConfig;
     }
-    
+
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest httpReq = (HttpServletRequest) request;
         HttpServletResponse httpResp = (HttpServletResponse) response;
-        
+
         HttpSession session = httpReq.getSession(false);
-        
-        if (session.getAttribute("user-authenticated") == null) {
-            httpResp.sendRedirect("login-error.jsp");
+
+        if (session != null) {
+            if (session.getAttribute("user-authenticated") == null) {
+                httpResp.sendRedirect("login-error.jsp");
+            } else {
+                chain.doFilter(request, response);
+            }
         }
-        else {
-            chain.doFilter(request, response); 
-        }
+
     }
-    
+
     @Override
     public void destroy() {
-        
+
     }
-    
+
 }
